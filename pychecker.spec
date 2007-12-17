@@ -12,7 +12,6 @@ Patch0: pychecker-0.8.10-add-manpage
 Patch1: pychecker-0.8.16-root.patch
 License: BSD-like
 Group: Development/Python
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires: python
 BuildArch: noarch
 BuildRequires: python python-devel
