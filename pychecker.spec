@@ -1,21 +1,20 @@
 %define name pychecker
-%define version 0.8.16
-%define release %mkrel 2
+%define version 0.8.17
+%define release %mkrel 1
 
 Summary: A python source code checking tool
 Name: %{name}
 Version: %{version}
 Release: %{release}
+License: BSD-like
+Group: Development/Python
 Url: http://pychecker.sourceforge.net/
 Source0: http://prdownloads.sourceforge.net/pychecker/%{name}-%{version}.tar.bz2
 Patch0: pychecker-0.8.10-add-manpage
-Patch1: pychecker-0.8.16-root.patch
-License: BSD-like
-Group: Development/Python
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires: python
+BuildRequires: python-devel
 BuildArch: noarch
-BuildRequires: python python-devel
+BuildRoot: %{_tmppath}/%{name}-%{version}
 
 %description
 PyChecker is a tool for finding bugs in python source code. It finds problems
@@ -27,7 +26,6 @@ infrequent.
 %prep
 %setup -q
 %patch0 -p1 -b .add_manpage
-%patch1 -p1 -b .root
 
 chmod a+rX -R .
 
@@ -36,12 +34,12 @@ python setup.py config
 CFLAGS="$RPM_OPT_FLAGS" python setup.py build
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 python setup.py install --root=%{buildroot}
-rm -f $RPM_BUILD_ROOT/%{py_puresitedir}/%{name}/{CHANGELOG,COPYRIGHT,KNOWN_BUGS,MAINTAINERS,README,TODO,pycheckrc}
+rm -f %{buildroot}/%{py_puresitedir}/%{name}/{CHANGELOG,COPYRIGHT,KNOWN_BUGS,MAINTAINERS,README,TODO,pycheckrc}
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
@@ -49,5 +47,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/pychecker
 %{py_puresitedir}/pychecker
 %{py_puresitedir}/*.egg-info
-
-
