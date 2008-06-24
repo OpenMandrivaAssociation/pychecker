@@ -1,6 +1,6 @@
 %define name pychecker
 %define version 0.8.17
-%define release %mkrel 1
+%define release %mkrel 2
 
 Summary: A python source code checking tool
 Name: %{name}
@@ -37,6 +37,7 @@ CFLAGS="$RPM_OPT_FLAGS" python setup.py build
 rm -rf %{buildroot}
 python setup.py install --root=%{buildroot}
 rm -f %{buildroot}/%{py_puresitedir}/%{name}/{CHANGELOG,COPYRIGHT,KNOWN_BUGS,MAINTAINERS,README,TODO,pycheckrc}
+perl -pi -e 's|%{buildroot}||' %{buildroot}%{_bindir}/pychecker
 
 %clean
 rm -rf %{buildroot}
