@@ -1,6 +1,9 @@
 %define name pychecker
 %define version 0.8.17
-%define release %mkrel 2
+%define release %mkrel 3
+
+%define python_compile_opt python -O -c "import compileall; compileall.compile_dir('.')"
+%define python_compile     python -c "import compileall; compileall.compile_dir('.')"
 
 Summary: A python source code checking tool
 Name: %{name}
@@ -31,13 +34,21 @@ chmod a+rX -R .
 
 %build
 python setup.py config
-CFLAGS="$RPM_OPT_FLAGS" python setup.py build
+python setup.py build
 
 %install
 rm -rf %{buildroot}
-python setup.py install --root=%{buildroot}
+python setup.py install --root=%{buildroot} --compile --optimize=2
 rm -f %{buildroot}/%{py_puresitedir}/%{name}/{CHANGELOG,COPYRIGHT,KNOWN_BUGS,MAINTAINERS,README,TODO,pycheckrc}
 perl -pi -e 's|%{buildroot}||' %{buildroot}%{_bindir}/pychecker
+
+# pychecker2
+mkdir -p %{buildroot}%{py_puresitedir}/pychecker2
+install -m 0644 pychecker2/*.py %{buildroot}%{py_puresitedir}/pychecker2/
+pushd pychecker2
+%{python_compile_opt}
+%{python_compile}
+install *.pyc *.pyo %{buildroot}%{py_puresitedir}/pychecker2/
 
 %clean
 rm -rf %{buildroot}
@@ -47,4 +58,5 @@ rm -rf %{buildroot}
 %doc CHANGELOG COPYRIGHT KNOWN_BUGS MAINTAINERS README TODO pycheckrc
 %{_bindir}/pychecker
 %{py_puresitedir}/pychecker
+%{py_puresitedir}/pychecker2
 %{py_puresitedir}/*.egg-info
