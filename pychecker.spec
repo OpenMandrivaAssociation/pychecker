@@ -1,6 +1,6 @@
 %define name pychecker
-%define version 0.8.17
-%define release %mkrel 3
+%define version 0.8.18
+%define release %mkrel 1
 
 %define python_compile_opt python -O -c "import compileall; compileall.compile_dir('.')"
 %define python_compile     python -c "import compileall; compileall.compile_dir('.')"
@@ -12,7 +12,7 @@ Release: %{release}
 License: BSD-like
 Group: Development/Python
 Url: http://pychecker.sourceforge.net/
-Source0: http://prdownloads.sourceforge.net/pychecker/%{name}-%{version}.tar.bz2
+Source0: http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Patch0: pychecker-0.8.10-add-manpage
 Requires: python
 BuildRequires: python-devel
