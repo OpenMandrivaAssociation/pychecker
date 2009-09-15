@@ -1,6 +1,6 @@
 %define name pychecker
 %define version 0.8.18
-%define release %mkrel 1
+%define release %mkrel 2
 
 %define python_compile_opt python -O -c "import compileall; compileall.compile_dir('.')"
 %define python_compile     python -c "import compileall; compileall.compile_dir('.')"
