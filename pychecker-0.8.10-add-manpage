@@ -1,0 +1,128 @@
+--- pychecker-0.8.10.orig/debian/pychecker.1
++++ pychecker-0.8.10/debian/pychecker.1
+@@ -0,0 +1,125 @@
++.\"                                      Hey, EMACS: -*- nroff -*-
++.\" First parameter, NAME, should be all caps
++.\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
++.\" other parameters are allowed: see man(7), man(1)
++.TH PYCHECKER 1 "12 June 2001"
++.\" Please adjust this date whenever revising the manpage.
++.\"
++.\" Some roff macros, for reference:
++.\" .nh        disable hyphenation
++.\" .hy        enable hyphenation
++.\" .ad l      left justify
++.\" .ad b      justify to both left and right margins
++.\" .nf        disable filling
++.\" .fi        enable filling
++.\" .br        insert line break
++.\" .sp <n>    insert n+1 empty lines
++.\" for manpage-specific macros, see man(7)
++.SH NAME
++pychecker \- program to check python scripts for common mistakes
++.SH SYNOPSIS
++.B pychecker
++.RI [ options ] " files" ...
++.br
++.SH DESCRIPTION
++This manual page documents briefly the
++.B pychecker
++command.
++It was written for the Debian GNU/Linux distribution
++because the original program does not have a manual page.
++.PP
++.\" TeX users may be more comfortable with the \fB<whatever>\fP and
++.\" \fI<whatever>\fP escape sequences to invode bold face and italics, 
++.\" respectively.
++\fBpychecker\fP is a program that finds common bugs in python source code.
++It finds problems that are typically caught by a compiler for less
++dynamic languages, like C and C++.  Because of the dynamic nature
++of python, some warnings may be incorrect; however,
++spurious warnings should be fairly infrequent.
++
++PyChecker works in a combination of ways.  First, it imports each
++module.  If there is an import error, the module cannot be processed.
++The import provides some basic information about the module.  The code
++for each function, class, and method is checked for possible problems.
++
++.SH OPTIONS
++This program follows the usual GNU command line syntax, with long
++options starting with two dashes (`-').
++A summary of options is included below.
++.TP
++.B \-h, \-\-help
++Show summary of options.
++.TP
++.B \-s, \-\-doc
++turn off all warnings for no doc strings
++.TP
++.B \-m, \-\-moduledoc    
++no module doc strings [on]
++.TP
++.B \-c, \-\-classdoc     
++no class doc strings [on]
++.TP
++.B \-f, \-\-funcdoc      
++no function/method doc strings [off]
++.TP
++
++.B \-i, \-\-import       
++unused imports [on]
++.TP
++.B \-l, \-\-local        
++unused local variables, except tuples [on]
++.TP
++.B \-t, \-\-tuple        
++all unused local variables, including tuples [off]
++.TP
++.B \-v, \-\-var          
++all unused module variables [off]
++.TP
++.B \-p, \-\-privatevar   
++unused private module variables [on]
++.TP
++.B \-g, \-\-allglobals   
++report each occurrence of global warnings [off]
++.TP
++.B \-n, \-\-namedargs    
++functions called with named arguments (like keywords) [on]
++.TP
++.B \-a, \-\-initattr     
++Attributes (members) must be defined in __init__() [off]
++.TP
++.B \-I, \-\-initsubclass 
++Subclass.__init__() not defined [off]
++.TP
++.B \-A, \-\-callattr     
++Calling data members as functions [off]
++.TP
++
++.B \-b, \-\-blacklist    
++ignore warnings from the list of modules [['Tkinter', 'wxPython', 'gtk', 'GTK', 'GDK']]
++.TP
++.B \-V, \-\-varlist      
++ignore variables not used from the list [['Tkinter', 'wxPython', 'gtk', 'GTK', 'GDK']]
++.TP
++.B \-L, \-\-maxlines     
++maximum lines in a function [200]
++.TP
++.B \-B, \-\-maxbranches  
++maximum branches in a function [50]
++.TP
++.B \-R, \-\-maxreturns   
++maximum returns in a function [10]
++.TP
++
++.B \-P, \-\-printparse   
++print internal checker parse structures [off]
++.TP
++.B \-d, \-\-debug        
++turn on debugging for checker [off]
++
++
++.SH SEE ALSO
++.BR python (1)
++.br
++.SH AUTHOR
++This manual page was written by Arto Jantunen <viiru@debian.org>,
++for the Debian GNU/Linux system (but may be used by others).
