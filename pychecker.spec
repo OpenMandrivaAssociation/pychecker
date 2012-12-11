@@ -58,3 +58,53 @@ rm -rf %{buildroot}
 %{py_puresitedir}/pychecker2
 %{py_puresitedir}/*.egg-info
 %{_sysconfdir}/pycheckrc
+
+
+%changelog
+* Tue May 10 2011 Sandro Cazzaniga <kharec@mandriva.org> 0.8.19-1mdv2011.0
++ Revision: 673221
+- no more pycheck2/*py files
+- new version
+- install pycheckrc file
+- little clean of spec
+
+* Tue Nov 02 2010 Michael Scherer <misc@mandriva.org> 0.8.18-3mdv2011.0
++ Revision: 592423
+- rebuild for python 2.7
+
+* Tue Sep 15 2009 Thierry Vignaud <tv@mandriva.org> 0.8.18-2mdv2010.0
++ Revision: 441983
+- rebuild
+
+* Sat Dec 27 2008 Adam Williamson <awilliamson@mandriva.org> 0.8.18-1mdv2009.1
++ Revision: 319603
+- rebuild with python 2.6
+- new release 0.8.18
+
+* Wed Aug 20 2008 Adam Williamson <awilliamson@mandriva.org> 0.8.17-3mdv2009.0
++ Revision: 274404
+- add pychecker2 as well (spe needs it)
+- use --optimize=2 to get .pyo files
+- no point setting optimization flags on a noarch package
+
+* Tue Jun 24 2008 Guillaume Rousse <guillomovitch@mandriva.org> 0.8.17-2mdv2009.0
++ Revision: 228551
+- fix wrapper (spotted by Laurent Poligny <laurent.poligny@ibisc.univ-evry.fr>
+
+* Thu Dec 27 2007 Guillaume Rousse <guillomovitch@mandriva.org> 0.8.17-1mdv2008.1
++ Revision: 138597
+- new version
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+
+
+* Tue Dec 05 2006 Michael Scherer <misc@mandriva.org> 0.8.16-2mdv2007.0
++ Revision: 91351
+- Rebuild for new python
+- use macro to compile on x86_64, and clean the file listing, by using rm instead of %%exclude
+- Import pychecker
+
