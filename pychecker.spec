@@ -4,7 +4,7 @@
 Summary:	A python source code checking tool
 Name:		pychecker
 Version:	0.8.19
-Release:	%mkrel 1
+Release:	2
 License:	BSD-like
 Group:		Development/Python
 Url:		http://pychecker.sourceforge.net/
