@@ -7,7 +7,7 @@ Version:	0.8.19
 Release:	2
 License:	BSD-like
 Group:		Development/Python
-Url:		http://pychecker.sourceforge.net/
+Url:		https://pychecker.sourceforge.net/
 Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Patch0:		pychecker-0.8.10-add-manpage
 Requires:	python
